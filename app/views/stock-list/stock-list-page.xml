@@ -1,0 +1,31 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-gray-100">
+    <ActionBar title="Raize Stock Analysis" class="bg-blue-600 text-white" />
+    
+    <GridLayout>
+        <ListView items="{{ stocks }}" class="list-group">
+            <ListView.itemTemplate>
+                <GridLayout rows="auto, auto, auto, auto" columns="*, auto" class="p-4 bg-white m-2 rounded-lg">
+                    <Label text="{{ symbol }}" row="0" col="0" class="text-lg font-bold text-blue-600" />
+                    <Label text="{{ name }}" row="0" col="1" class="text-right text-gray-600" />
+                    
+                    <StackLayout row="1" col="0" colSpan="2" class="mt-2">
+                        <Label text="{{ 'Current: $' + currentPrice.toFixed(2) }}" class="text-gray-700" />
+                        <Label text="{{ '6-Month Target: $' + sixMonthProjection.toFixed(2) }}" class="text-green-600" />
+                        <Label text="{{ 'Potential Gain: ' + potentialGain.toFixed(1) + '%' }}" class="text-blue-500" />
+                        <Label text="{{ 'Max Loss Risk: ' + potentialLoss.toFixed(1) + '%' }}" class="text-red-500" />
+                    </StackLayout>
+                    
+                    <StackLayout row="2" col="0" colSpan="2" class="mt-2">
+                        <Label text="{{ 'Risk Level: ' + riskLevel }}" class="text-red-500" />
+                        <Label text="{{ 'Confidence: ' + confidenceScore.toFixed(0) + '%' }}" class="text-gray-600" />
+                        <Label text="{{ 'Volatility: ' + volatilityScore.toFixed(1) + '%' }}" class="text-orange-500" />
+                    </StackLayout>
+
+                    <StackLayout row="3" col="0" colSpan="2" class="mt-2">
+                        <Label text="{{ 'Risk Factors: ' + riskFactors.join(', ') }}" textWrap="true" class="text-sm text-gray-500" />
+                    </StackLayout>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>
